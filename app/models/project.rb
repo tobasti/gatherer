@@ -1,9 +1,7 @@
-class Project
-  attr_accessor :tasks, :due_date
+class Project < ActiveRecord::Base
+  validates :name, presence: true
 
-  def initialize
-    @tasks = []
-  end
+  has_many :tasks
 
   def incomplete_tasks
     tasks.reject(&:complete?)
